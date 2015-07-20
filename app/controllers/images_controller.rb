@@ -4,7 +4,8 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @images = Image.all.order("created_at DESC").paginate(page: params[:page], per_page: 1)
+    @random_image = Image.all.order("RANDOM()").paginate(page: params[:page], per_page: 4)
   end
 
   # GET /images/1
@@ -69,6 +70,6 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:title)
+      params.require(:image).permit(:title, :image)
     end
 end

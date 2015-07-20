@@ -16,10 +16,12 @@ group :development, :test do
   gem 'spring'
 end
 
-gem 'rmagick', :require => 'RMagick'
+gem 'mini_magick', '~> 4.2.7'
  gem 'carrierwave'
  gem 'bootstrap-sass', '~> 3.2.0'
  gem 'autoprefixer-rails'
  gem 'rails_admin'
  gem 'will_paginate'
-
+ gem 'fog'
+gem 'figaro'
+gem 'randumb'

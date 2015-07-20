@@ -5,37 +5,36 @@
 <div class="contianer">
     <div class="row">
         <div class="col-md-3">
-          
+          <div class="panel panel-default">
+            <div class="panel-heading">Random Pictures</div>
+            <div class="panel-body">
+              <% @random_image.each do |random| %>
+              <%= image_tag random.image.url(:thumb) %>
+              <% end %>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 text-center">
           <h1>Listing Images</h1>
+                <% @images.each do |image| %>
+                  <%= image_tag image.image.url %>
+<!--                     <td><%= link_to 'Show', image %></td>
+                    <td><%= link_to 'Edit', edit_image_path(image) %></td>
+                    <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+                <% end %>
+            <div class="text-center">
+              <div class="pagination">
+                <%= will_paginate @images, :previous_label => '<<', :next_label => '>>', :page_links => false %>
+              </div>
+            </div>
+            <br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @images.each do |image| %>
-      <tr>
-        <td><%= image.title %></td>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Image', new_image_path %>
+            <%= link_to 'New Image', new_image_path %>
         </div>
         <div class="col-md-3">
-          
+          <div class="panel panel-default">
+            <div class="panel-heading">Random Pictures</div>s
+          </div>
         </div>
     </div>
 </div>
